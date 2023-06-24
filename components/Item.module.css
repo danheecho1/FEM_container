@@ -1,0 +1,52 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 13px;
+}
+
+.preview {
+    margin: 0 auto;
+    transition: all 0.5s ease;
+}
+
+.preview:hover {
+    filter: opacity(0.6);
+}
+
+.buttonsDiv {
+    display: flex;
+    gap: 0.75em;
+    position: absolute;
+    top: 120px;
+    left: 39px;
+    justify-content: space-around;
+    /* display: none; */
+}
+
+.buttonsDiv a {
+    border: none;
+    width: 110px;
+    height: 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.source {
+    background-color: #B9B9B9;
+    color: #5D5D5D;
+}
+
+.demo {
+    background-color: #2F68B6;
+}

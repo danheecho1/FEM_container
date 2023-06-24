@@ -1,0 +1,39 @@
+.searchBarDiv {
+    margin: 0 auto;
+}
+
+.searchBar {
+	background-color: white;
+	border: none;
+	border-radius: 20px;
+	width: 375px;
+	height: 30px;
+	color: black;
+	font-family: inherit;
+	padding-left: 3.5em;
+}
+
+.searchBar:focus {
+	outline: none;
+}
+
+.searchBarDiv {
+	position: relative;
+}
+
+.searchBarDiv Button {
+	background: transparent;
+	border: none;
+}
+
+.searchImage {
+	position: absolute;
+	left: 15px;
+	bottom: 7px;
+}
+
+.catalog {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin-top: 3.25em;
+}
