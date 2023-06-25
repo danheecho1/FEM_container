@@ -1,13 +1,15 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Item.module.css";
 
-const Item = () => {
+const Item = (props) => {
 	return (
 		<>
 			<article className={styles.item}>
-				<h2 className={styles.title}>FAQ Accordion</h2>
+				<h2 className={styles.title}>{props.title}</h2>
 				<Image
 					src="/sample.png"
 					width="275"
@@ -16,10 +18,10 @@ const Item = () => {
 					className={styles.preview}
 				/>
 				<div className={styles.buttonsDiv}>
-					<Link href="https://google.com" className={styles.source}>
+					<Link href={props.sourceLink} target="_blank" className={styles.source}>
 						Go to source
 					</Link>
-					<Link href="https://google.com" className={styles.demo}>
+					<Link href={props.demoLink} target="_blank" className={styles.demo}>
 						Live demo
 					</Link>
 				</div>
