@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,17 +9,23 @@ const Item = (props) => {
 			<article className={styles.item}>
 				<h2 className={styles.title}>{props.title}</h2>
 				<Image
-					src="/sample.png"
+					src={props.preview}
 					width="275"
 					height="200"
-					alt="Project 1"
+					alt={props.preview}
 					className={styles.preview}
 				/>
 				<div className={styles.buttonsDiv}>
-					<Link href={props.sourceLink} target="_blank" className={styles.source}>
+					<Link
+						href={props.sourceLink}
+						target="_blank"
+						className={styles.source}>
 						Go to source
 					</Link>
-					<Link href={props.demoLink} target="_blank" className={styles.demo}>
+					<Link
+						href={props.demoLink}
+						target="_blank"
+						className={styles.demo}>
 						Live demo
 					</Link>
 				</div>

@@ -1,8 +1,7 @@
-// Will not work because puppeteer is a node.js library.. JS in a frontend environment runs in a browser sandbox. 
+const puppeteer = require("puppeteer");
+import { NextResponse } from "next/server";
 
-import puppeteer from "puppeteer";
-
-const Scrape = async () => {
+export async function GET() {
 	const browser = await puppeteer.launch({
 		headless: "new",
 		defaultViewport: null,
@@ -17,19 +16,18 @@ const Scrape = async () => {
 		);
 		return Array.from(challenges).map((challenge) => {
 			const title = challenge.querySelector(
-				".Content__Wrapper-sc-f0243o-0 .Heading__Wrapper-sc-1v0dkkd-0"
-			).innerText;
+				".Content__Wrapper-sc-f0243o-0 .Text__Wrapper-sc-zbm6r7-0 a"
+			).textContent;
 			const imgUrl = challenge
 				.querySelector(".image-wrapper .Image__Wrapper-sc-fh06ek-0 img")
 				.getAttribute("src");
-			return { title, imgUrl };
+			const obj = {
+				title: title,
+				imgUrl: imgUrl,
+			};
+			return obj;
 		});
 	});
-	console.log(allChallenges);
 	await browser.close();
-	return (
-		<p>{allChallenges}</p>
-	);
-};
-
-export default Scrape;
+	return NextResponse.json(allChallenges);
+}

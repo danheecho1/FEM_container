@@ -8,6 +8,8 @@ import { Item, Navbar } from "@/components";
 
 const Homepage = () => {
 	const [challenges, setChallenges] = useState([]);
+	const [femChallenges, setFemChallenges] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -26,8 +28,20 @@ const Homepage = () => {
 		fetchData().then((res) => {
 			setChallenges(res);
 		});
+
+		const fetchChallenges = async () => {
+			const res = await fetch("/api/scrape");
+			const femData = await res.json();
+			return femData;
+		};
+		fetchChallenges()
+			.then((res) => {
+				setFemChallenges(res);
+			})
+			.then(setIsLoading(false));
 	}, []);
 
+	if (isLoading) return <p>Loading...</p>;
 	return (
 		<>
 			<Navbar />
@@ -47,12 +61,20 @@ const Homepage = () => {
 			</section>
 			<main className={styles.catalog}>
 				{challenges.map((femRepo) => {
+					const matchingChallenge = femChallenges.find(
+						(challenge) => challenge.title === femRepo.description
+					);
+					const previewUrl = matchingChallenge
+						? matchingChallenge.imgUrl
+						: "";
+
 					return (
 						<Item
 							key={femRepo.id}
 							title={femRepo.description}
 							demoLink={femRepo.homepage}
 							sourceLink={femRepo.html_url}
+							preview={previewUrl}
 						/>
 					);
 				})}

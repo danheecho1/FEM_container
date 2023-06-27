@@ -17,10 +17,11 @@
 .preview {
     margin: 0 auto;
     transition: all 0.5s ease;
+    filter: opacity(0.6);
 }
 
 .preview:hover {
-    filter: opacity(0.6);
+    filter: opacity(1);
 }
 
 .buttonsDiv {
@@ -30,7 +31,6 @@
     top: 120px;
     left: 39px;
     justify-content: space-around;
-    /* display: none; */
 }
 
 .buttonsDiv a {
