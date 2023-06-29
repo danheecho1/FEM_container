@@ -12,7 +12,7 @@
 
 .navBar {
 	position: absolute;
-	right: 0;
+	right: 30px;
 	display: flex;
 	flex-direction: column;
 	align-self: flex-end;
@@ -28,4 +28,23 @@
 .portfolio {
 	cursor: pointer;
 	border-radius: 50%;
+}
+
+@media screen and (max-width: 1440px) {
+	.navBar {
+		right: 25px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.header {
+		flex-direction: column;
+		margin: 4em auto 2em;
+	}
+
+	.navBar {
+		position: static;
+		align-self: center;
+		margin-top: 2em;
+	}
 }

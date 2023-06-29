@@ -22,12 +22,16 @@ const Item = (props) => {
 						className={styles.source}>
 						Go to source
 					</Link>
-					<Link
-						href={props.demoLink}
-						target="_blank"
-						className={styles.demo}>
-						Live demo
-					</Link>
+					{props.demoLink ? (
+						<Link
+							href={props.demoLink}
+							target="_blank"
+							className={styles.demo}>
+							Live demo
+						</Link>
+					) : (
+						<button className={styles.wip}>Not live</button>
+					)}
 				</div>
 			</article>
 		</>
