@@ -30,7 +30,7 @@ const Navbar = () => {
 							</Link>
 						</li>
 						<li>
-							<Link href="https://google.com" target="_blank">
+							<Link href="" target="_blank">
 								<Image
 									src="/portfolio.svg"
 									width="36"

@@ -28,8 +28,8 @@
 	visibility: hidden;
 	gap: 0.75em;
 	position: absolute;
-	top: 200px;
-	left: 39px;
+	top: 205px;
+	left: 52px;
 	justify-content: space-around;
 }
 
@@ -67,6 +67,12 @@
     background-color: crimson;
 }
 
+@media screen and (max-width: 1440px) {
+	.buttonsDiv {
+		left: 47px;
+	}
+}
+
 @media screen and (max-width: 1024px) {
 	.title {
 		font-size: 1.25rem;
@@ -74,6 +80,10 @@
 	.preview {
 		width: 300px;
 		height: 220px;
+	}
+	.buttonsDiv {
+		top: 220px;
+		left: 77px;
 	}
 }
 
@@ -84,5 +94,9 @@
 	.preview {
 		width: 375px;
 		height: 275px;
+	}
+	.buttonsDiv {
+		top: 270px;
+		left: 107px;
 	}
 }
