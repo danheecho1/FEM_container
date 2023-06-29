@@ -1,54 +1,63 @@
 .item {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    position: relative;
-    margin-bottom: 40px;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	position: relative;
+	margin-bottom: 40px;
 }
 
 .title {
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 13px;
-    padding: 0 3em;
-    height: 40px;
+	font-size: 16px;
+	text-align: center;
+	margin-bottom: 13px;
+	padding: 0 3em;
+	height: 40px;
 }
 
 .preview {
-    margin: 0 auto;
-    transition: all 0.5s ease;
-    filter: opacity(0.6);
+	margin: 0 auto;
+	transition: all 0.5s ease;
+	filter: opacity(1);
 }
 
-.preview:hover {
-    filter: opacity(1);
+.item:hover .preview {
+	filter: opacity(0.4);
 }
 
 .buttonsDiv {
-    display: flex;
-    gap: 0.75em;
-    position: absolute;
-    top: 120px;
-    left: 39px;
-    justify-content: space-around;
+	display: flex;
+	visibility: hidden;
+	gap: 0.75em;
+	position: absolute;
+	top: 200px;
+	left: 39px;
+	justify-content: space-around;
+}
+
+.item:hover .buttonsDiv {
+	visibility: visible;
 }
 
 .buttonsDiv a {
-    border: none;
-    width: 110px;
-    height: 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 14px;
-    text-align: center;
-    line-height: 30px;
+	border: none;
+	width: 110px;
+	height: 30px;
+	border-radius: 30px;
+	text-decoration: none;
+	font-size: 14px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.buttonsDiv a:hover {
+	transform: scale(1.1);
 }
 
 .source {
-    background-color: #B9B9B9;
-    color: #5D5D5D;
+	background-color: white;
+	color: black;
 }
 
 .demo {
-    background-color: #2F68B6;
+	background-color: #2f68b6;
 }

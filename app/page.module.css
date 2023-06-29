@@ -1,3 +1,9 @@
+.loadingText {
+	text-align: center;
+	font-size: 3em;
+	margin-top: 3em;
+}
+
 .searchBarDiv {
     margin: 0 auto;
 }

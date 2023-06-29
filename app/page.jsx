@@ -25,23 +25,46 @@ const Homepage = () => {
 			});
 			return filteredData;
 		};
-		fetchData().then((res) => {
-			setChallenges(res);
-		});
 
 		const fetchChallenges = async () => {
 			const res = await fetch("/api/scrape");
 			const femData = await res.json();
 			return femData;
 		};
-		fetchChallenges()
-			.then((res) => {
-				setFemChallenges(res);
+
+		Promise.all([fetchData(), fetchChallenges()])
+			.then(([data, femData]) => {
+				setChallenges(data);
+				setFemChallenges(femData);
 			})
-			.then(setIsLoading(false));
+			.finally(() => {
+				setIsLoading(false);
+			});
 	}, []);
 
-	if (isLoading) return <p>Loading...</p>;
+	if (isLoading) {
+		return (
+			<>
+			<Navbar />
+			<section className={styles.searchBarDiv}>
+				<form>
+					<input type="text" className={styles.searchBar} />
+					<button>
+						<Image
+							src="/search.svg"
+							width="15"
+							height="15"
+							className={styles.searchImage}
+							alt="Search submit button"
+						/>
+					</button>
+				</form>
+			</section>
+			<p className={styles.loadingText}>Loading...</p>
+		</>
+		);
+	}
+
 	return (
 		<>
 			<Navbar />
