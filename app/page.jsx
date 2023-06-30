@@ -10,6 +10,7 @@ const Homepage = () => {
 	const [challenges, setChallenges] = useState([]);
 	const [femChallenges, setFemChallenges] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [searchKey, setSearchKey] = useState("");
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -45,23 +46,23 @@ const Homepage = () => {
 	if (isLoading) {
 		return (
 			<>
-			<Navbar />
-			<section className={styles.searchBarDiv}>
-				<form>
-					<input type="text" className={styles.searchBar} />
-					<button>
-						<Image
-							src="/search.svg"
-							width="15"
-							height="15"
-							className={styles.searchImage}
-							alt="Search submit button"
-						/>
-					</button>
-				</form>
-			</section>
-			<p className={styles.loadingText}>Loading...</p>
-		</>
+				<Navbar />
+				<section className={styles.searchBarDiv}>
+					<form>
+						<input type="text" className={styles.searchBar} />
+						<button>
+							<Image
+								src="/search.svg"
+								width="15"
+								height="15"
+								className={styles.searchImage}
+								alt="Search submit button"
+							/>
+						</button>
+					</form>
+				</section>
+				<p className={styles.loadingText}>Loading...</p>
+			</>
 		);
 	}
 
@@ -69,38 +70,48 @@ const Homepage = () => {
 		<>
 			<Navbar />
 			<section className={styles.searchBarDiv}>
-				<form>
-					<input type="text" className={styles.searchBar} />
-					<button>
-						<Image
-							src="/search.svg"
-							width="15"
-							height="15"
-							className={styles.searchImage}
-							alt="Search submit button"
-						/>
-					</button>
-				</form>
+				<input
+					type="text"
+					className={styles.searchBar}
+					onChange={(e) => {
+						setSearchKey(e.target.value);
+					}}
+				/>
+				<button type="button">
+					<Image
+						src="/search.svg"
+						width="15"
+						height="15"
+						className={styles.searchImage}
+						alt="Search submit button"
+					/>
+				</button>
 			</section>
 			<main className={styles.catalog}>
-				{challenges.map((femRepo) => {
-					const matchingChallenge = femChallenges.find(
-						(challenge) => challenge.title === femRepo.description
-					);
-					const previewUrl = matchingChallenge
-						? matchingChallenge.imgUrl
-						: "";
-
-					return (
-						<Item
-							key={femRepo.id}
-							title={femRepo.description}
-							demoLink={femRepo.homepage}
-							sourceLink={femRepo.html_url}
-							preview={previewUrl}
-						/>
-					);
-				})}
+				{challenges
+					.filter((femRepo) => {
+						return femRepo.description
+							.toLowerCase()
+							.includes(searchKey.toLowerCase());
+					})
+					.map((femRepo) => {
+						const matchingChallenge = femChallenges.find(
+							(challenge) =>
+								challenge.title === femRepo.description
+						);
+						const previewUrl = matchingChallenge
+							? matchingChallenge.imgUrl
+							: "";
+						return (
+							<Item
+								key={femRepo.id}
+								title={femRepo.description}
+								demoLink={femRepo.homepage}
+								sourceLink={femRepo.html_url}
+								preview={previewUrl}
+							/>
+						);
+					})}
 			</main>
 		</>
 	);
