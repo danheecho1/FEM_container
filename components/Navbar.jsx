@@ -30,7 +30,7 @@ const Navbar = () => {
 							</Link>
 						</li>
 						<li>
-							<Link href="" target="_blank">
+							<Link href="https://www.dannycho.dev" target="_blank">
 								<Image
 									src="/portfolio.svg"
 									width="36"
